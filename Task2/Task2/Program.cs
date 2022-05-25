@@ -64,7 +64,7 @@
             }
         }
 
-        enum Commands
+        private enum Commands
         {
             ADD_PRODUCT,
             CHANGE_PRICE,
