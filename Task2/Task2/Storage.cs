@@ -41,8 +41,7 @@ namespace Task2
             {
                 throw new ArgumentException("Error: invalid price argument");
             }
-
-
+            
             if (typeOfProduct?.ToUpper() == "MEAT")
             {                
                 Console.WriteLine("Select the type of meat");

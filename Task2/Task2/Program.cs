@@ -33,7 +33,7 @@
                         List<Meat> meats = storage.GetMeats();
                         for (int i = 0; i < meats.Count; ++i)
                         {
-                            Console.WriteLine("Product #{0}", i);
+                            Console.WriteLine("Product #{0}", i+1);
                             meats[i].PrintInformation();
                         }
                     }
@@ -43,7 +43,7 @@
                     }
                     else if (operation?.ToUpper() == Commands.AT.ToString())
                     {
-                        Console.Write("Enter the index of product >> ");
+                        Console.Write("Enter the index of product (starts from 1) >> ");
                         int i = Convert.ToInt32(Console.ReadLine());
                         var temp = storage.At(i);
                         temp.PrintInformation();
@@ -64,7 +64,7 @@
             }
         }
 
-        enum Commands
+        private enum Commands
         {
             ADD_PRODUCT,
             CHANGE_PRICE,
