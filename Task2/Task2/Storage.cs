@@ -28,14 +28,14 @@ namespace Task2
             Console.Write("Enter the name of product \n>> ");
             var name = Console.ReadLine();
 
-            Console.Write("Enter the price of product \n>> ");
+            Console.Write("Enter the weight of product (kg) \n>> ");
             double weight = Convert.ToDouble(Console.ReadLine());
             if (weight <= 0)
             {
                 throw new ArgumentException("Error: invalid weight argument");
             }
 
-            Console.Write("Enter the weight of product \n>> ");
+            Console.Write("Enter the price of product \n>> ");
             double price = Convert.ToDouble(Console.ReadLine());
             if (price <= 0)
             {
