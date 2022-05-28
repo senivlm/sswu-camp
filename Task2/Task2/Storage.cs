@@ -112,6 +112,7 @@ namespace Task2
             Console.WriteLine("Prices are successfully changed");
         }
 
+        //indexator alternative, starts from 1
         public Product At(int index)
         {
             return storage[index-1];
