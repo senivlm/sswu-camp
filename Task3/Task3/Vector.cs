@@ -45,9 +45,10 @@ namespace Task3
                 int value;
                 do
                 {
-                    value = rand.Next(1, array.Length - i);
+                    value = rand.Next(1, array.Length+1);
+                    
                 }
-                while (array.Contains(value));
+                while (Array.Exists(array, element => element == value));
 
                 array[i] = value;
             }
@@ -65,7 +66,7 @@ namespace Task3
             int countDifference = 0;
 
             for (int i = 0; i < array.Length; ++i)
-            {
+            {  
                 bool isElement = false;
                 for (int j = 0; j < countDifference; ++j)
                 {
@@ -85,31 +86,29 @@ namespace Task3
                 }
             }
             
+            pairs = pairs.Where(element => element.Key != 0 && element.Value != 0).ToArray();
+
             return pairs;
         }
         //----------------------------------------------------------------------------
         public bool CheckPalindrome()
         {
-            //int[] temp = new int[array.Length];
+            int[] temp = new int[array.Length];
 
-            /*for (int i = 0; i < array.Length; ++i)
+            for (int i = 0; i < array.Length; ++i)
             {
                 temp[i] = array[array.Length - 1 - i];
             }
+            
 
-           for (int i = 0; i < array.Length; ++i)
-           {
+            for (int i = 0; i < array.Length; ++i)
+            {
                 if (temp[i] != array[i])
                     return false;
-           }
+            }
             
-           return true;  */
 
-            int[] temp = array;
-
-            Array.Reverse(temp);
-
-            return array.Equals(temp);
+            return true; 
         }
         //----------------------------------------------------------------------------
         public void ReverseVector()
@@ -136,7 +135,7 @@ namespace Task3
                 if (current == item)
                 {
                     counter++;
-                    if (counter > numberMax)
+                    if (counter > max)
                     {
                         max = counter;
                         numberMax = current;
@@ -172,29 +171,18 @@ namespace Task3
             END
         }
         //----------------------------------------------------------------------------
-        
-        public void PrintVector()
-        {
-            for (int i = 0; i < array.Length; ++i)
-            {
-                if (i == 0)
-                    Console.Write("{ ");
-                Console.Write(array[i]);
-                if (i != array.Length - 1)
-                    Console.Write(", ");
-                else
-                    Console.Write(" }");
-            }
-
-            Console.WriteLine();
-        }
-
         public override string ToString()
         {
             string line = "";
-            foreach(var item in array)
+            for (int i = 0; i < array.Length; ++i)
             {
-                line += item + " ";
+                if (i == 0)
+                    line = "{ ";
+                line += array[i];
+                if (i != array.Length - 1)
+                    line += ", ";
+                else
+                    line += " }";
             }
 
             return line;

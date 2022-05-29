@@ -42,7 +42,7 @@
                     {
                         vector.PrintVector();
                     }
-                    if (operation?.ToUpper() == Commands.RANDOM_INITIALIZATION.ToString())
+                    if (operation?.ToUpper() == Commands.RANDOM_INIT.ToString())
                     {
                         Console.Write("Enter first number >> ");
                         int a = Convert.ToInt32(Console.ReadLine()); 
@@ -51,12 +51,12 @@
                         vector.InitRand(a, b);
                         vector.PrintVector();
                     }
-                    if (operation?.ToUpper() == Commands.SHUFFLE_INITIALIZATION.ToString())
+                    if (operation?.ToUpper() == Commands.SHUFFLE_INIT.ToString())
                     {
                         vector.InitShuffle();
                         vector.PrintVector();
                     }
-                    if (operation?.ToUpper() == Commands.CALCULATE_FREQUENCE.ToString())
+                    if (operation?.ToUpper() == Commands.CALC_FREQ.ToString())
                     {
                         Pair<int, int>[] pairs = vector.CalculateFrequence();
                         foreach (var pair in pairs)
@@ -66,7 +66,7 @@
                     }
                     if (operation?.ToUpper() == Commands.PALINDROME_CHECK.ToString())
                     {
-                        string isPalindrome = vector.CheckPalindrome() ? " is Palindrome" : "is not Palindrome";
+                        string isPalindrome = vector.CheckPalindrome() ? " is Palindrome" : " is not Palindrome";
                         Console.WriteLine("Vector" + isPalindrome);
                     }
                     if (operation?.ToUpper() == Commands.VECTOR_REVERSE.ToString())
@@ -74,9 +74,10 @@
                         vector.ReverseVector();
                         vector.PrintVector();
                     }
-                    if (operation?.ToUpper() == Commands.FIND_LONGEST_COMMON_SUBSEQUENCE.ToString())
-                    { 
-                    
+                    if (operation?.ToUpper() == Commands.LONGEST_COMMON_SUBSEQUENCE.ToString())
+                    {
+                        vector.PrintVector();
+                        Console.WriteLine(vector.FindLongestСommonSubsequence());
                     }
                 }
                 catch (Exception ex)
@@ -89,12 +90,12 @@
         enum Commands
         {
             PRINT_VECTOR,
-            RANDOM_INITIALIZATION,
-            SHUFFLE_INITIALIZATION,
-            CALCULATE_FREQUENCE,
+            RANDOM_INIT,
+            SHUFFLE_INIT,
+            CALC_FREQ,
             PALINDROME_CHECK,
             VECTOR_REVERSE,
-            FIND_LONGEST_COMMON_SUBSEQUENCE,
+            LONGEST_COMMON_SUBSEQUENCE,
             QUICK_SORT
         }
     }
