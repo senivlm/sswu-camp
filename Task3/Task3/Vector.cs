@@ -12,7 +12,7 @@ namespace Task3
         {
             array = new int[n];
         }
-
+        //---------------------------------------------------------------------------
         public int this[int index]
         {
             get 
@@ -27,7 +27,7 @@ namespace Task3
                 array[index] = value; 
             }
         }
-
+        //----------------------------------------------------------------------------
         public void InitRand(int a, int b)
         {
             Random random = new Random();
@@ -36,7 +36,7 @@ namespace Task3
                 array[i] = random.Next(a, b);
             }
         }
-
+        //----------------------------------------------------------------------------
         public void InitShuffle()
         {
             Random rand = new Random();
@@ -52,7 +52,7 @@ namespace Task3
                 array[i] = value;
             }
         }
-
+        //----------------------------------------------------------------------------
         public Pair<int, int>[] CalculateFrequence()
         {
             Pair<int, int>[] pairs = new Pair<int, int>[array.Length];
@@ -87,7 +87,7 @@ namespace Task3
             
             return pairs;
         }
-
+        //----------------------------------------------------------------------------
         public bool CheckPalindrome()
         {
             //int[] temp = new int[array.Length];
@@ -111,8 +111,8 @@ namespace Task3
 
             return array.Equals(temp);
         }
-
-        public void ReverseArray()
+        //----------------------------------------------------------------------------
+        public void ReverseVector()
         {
             int[] temp = new int[array.Length];
 
@@ -123,8 +123,71 @@ namespace Task3
 
             array = temp;
         }
+        //----------------------------------------------------------------------------
+        public Pair<int, int> FindLongestСommonSubsequence()
+        {
+            int max = 0;
+            int numberMax = 0;
+            int counter = 0;
+            int current = array[0];
 
+            foreach (var item in array)
+            {
+                if (current == item)
+                {
+                    counter++;
+                    if (counter > numberMax)
+                    {
+                        max = counter;
+                        numberMax = current;
+                    }
+                }
+                else
+                {
+                    current = item;
+                    counter = 1;
+                }
+                
+            }
 
+            return new Pair<int, int>(max, numberMax);
+        }
+        //----------------------------------------------------------------------------
+        public void QuickSort(SortPivots pivot, int begin, int end)
+        {
+            if (begin < end)
+            {
+                int p = pivot == SortPivots.BEGIN ? begin :
+                    pivot == SortPivots.END ? end :
+                    end - begin / 2;
+
+                //
+            }
+        }
+    
+        public enum SortPivots
+        {
+            BEGIN,
+            MIDDLE,
+            END
+        }
+        //----------------------------------------------------------------------------
+        
+        public void PrintVector()
+        {
+            for (int i = 0; i < array.Length; ++i)
+            {
+                if (i == 0)
+                    Console.Write("{ ");
+                Console.Write(array[i]);
+                if (i != array.Length - 1)
+                    Console.Write(", ");
+                else
+                    Console.Write(" }");
+            }
+
+            Console.WriteLine();
+        }
 
         public override string ToString()
         {
@@ -135,6 +198,34 @@ namespace Task3
             }
 
             return line;
+        }
+
+/*        private int Partition(ref int[] Arr, int begin, int end)
+        {
+            int pivot = Arr[end];
+            int i = begin - 1;
+
+            for (int j = begin; j <= end; ++j)
+            {
+                if (Arr[j] <= pivot)
+                {
+                    ++i;
+                    Swap(ref Arr, i, j);
+                }
+            }
+
+            Swap(ref Arr, i + 1, end);
+            return i + 1;
+        } 
+        */
+        private void Swap(ref int[] Arr, int indexLeft, int indexRight)
+        {
+            if (Arr.Length <= indexRight || Arr.Length <= indexLeft)
+                throw new IndexOutOfRangeException("Indexes must be on the array length interval");
+
+            var temp = Arr[indexLeft];
+            Arr[indexLeft] = Arr[indexRight];
+            Arr[indexRight] = temp;
         }
 
         private int[] array;
