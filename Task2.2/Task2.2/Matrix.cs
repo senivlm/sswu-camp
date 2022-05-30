@@ -13,8 +13,6 @@ namespace Task2._2
             Reset(rows, cols);
         }
 
-
-
         public void PrintMatrix()
         {
             Console.WriteLine(NumRows + " " + NumCols);
@@ -110,56 +108,50 @@ namespace Task2._2
             PrintMatrix();
         }
 
+        /*public void GenerateDiagonalSnake(Direction direction)
+        {
+            if (NumCols != NumRows) throw new Exception("Error: number of cols must equal to number of rows");
+
+            if (direction == Direction.RIGHT)
+                GenerateDiagonalSnakeRight();
+            else
+
+        }*/
+        
         public void GenerateDiagonalSnake()
         {
-            if (NumCols != NumRows)
-                throw new Exception("Error: number of cols must equal to number of rows");
-
-            bool isUp = true;
-            int i = 0, j = 0;
-
-            for (int value = 1; value <= NumCols * NumCols;)
+            int i = 1;
+            int j = 1;
+            for (int value = 1; value <= NumCols * NumCols; ++value)
             {
-                if (isUp)
+                data[i - 1, j - 1] = value;
+                if ((i + j) % 2 == 0)
                 {
-                    for (; i >= 0 && j < NumCols; ++j, --i)
-                    {
-                        data[i, j] = value++;
-                    }
-
-                    if (i < 0 && j <= NumCols - 1)
-                    {
-                        i = 0;
-                    }
-                    else if (j == NumCols)
-                    {
+                    if (j < NumCols)
+                        ++j;
+                    else
                         i += 2;
-                        --j;
-                    }
+                    if (i > 1)
+                        --i;
                 }
-
                 else
                 {
-                    for (; j >= 0 && i < NumCols; ++i, --j)
-                    {
-                        data[i, j] = value++;
-                    }
-
-                    if (j < 0 && i <= NumCols - 1)
-                    {
-                        j = 0;
-                    }
-                    else if (i == NumCols)
-                    {
+                    if (i < NumCols)
+                        ++i;
+                    else
                         j += 2;
-                        --i;
-                    }
+                    if (j > 1)
+                        --j;
                 }
-
-                isUp = !isUp;
             }
 
             PrintMatrix();
+        }
+
+        public enum Direction
+        {
+            LEFT,
+            RIGHT
         }
 
         public void Reset(int newRows, int newCols)

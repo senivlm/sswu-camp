@@ -40,7 +40,7 @@
                 {
                     if (operation?.ToUpper() == Commands.PRINT_VECTOR.ToString())
                     {
-                        vector.PrintVector();
+                        Console.WriteLine(vector);
                     }
                     if (operation?.ToUpper() == Commands.RANDOM_INIT.ToString())
                     {
@@ -49,12 +49,12 @@
                         Console.Write("Enter second number >> ");
                         int b = Convert.ToInt32(Console.ReadLine());
                         vector.InitRand(a, b);
-                        vector.PrintVector();
+                        Console.WriteLine(vector);
                     }
                     if (operation?.ToUpper() == Commands.SHUFFLE_INIT.ToString())
                     {
                         vector.InitShuffle();
-                        vector.PrintVector();
+                        Console.WriteLine(vector);
                     }
                     if (operation?.ToUpper() == Commands.CALC_FREQ.ToString())
                     {
@@ -72,11 +72,11 @@
                     if (operation?.ToUpper() == Commands.VECTOR_REVERSE.ToString())
                     {
                         vector.ReverseVector();
-                        vector.PrintVector();
+                        Console.WriteLine(vector);
                     }
                     if (operation?.ToUpper() == Commands.LONGEST_COMMON_SUBSEQUENCE.ToString())
                     {
-                        vector.PrintVector();
+                        Console.WriteLine(vector);
                         Console.WriteLine(vector.FindLongestСommonSubsequence());
                     }
                 }
