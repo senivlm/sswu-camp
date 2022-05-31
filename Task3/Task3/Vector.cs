@@ -92,7 +92,7 @@ namespace Task3
         }
         //----------------------------------------------------------------------------
         public bool CheckPalindrome()
-        {
+        {//лишній допоміжний масив. Цикл треба крутити тільки до половини
             int[] temp = new int[array.Length];
 
             for (int i = 0; i < array.Length; ++i)
@@ -151,6 +151,7 @@ namespace Task3
 
             return new Pair<int, int>(max, numberMax);
         }
+        швидкого сортування практично немає
         //----------------------------------------------------------------------------
         public void QuickSort(SortPivots pivot, int begin, int end)
         {
