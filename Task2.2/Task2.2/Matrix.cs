@@ -48,7 +48,7 @@ namespace Task2._2
                     }
                 }
             }
-
+//не треба тут роздруковувати
             PrintMatrix();
         }
 
@@ -119,7 +119,7 @@ namespace Task2._2
         }*/
         
         public void GenerateDiagonalSnake()
-        {
+        {//неправильний підхід. Спробуйте ще раз. Якщо потрібно, усно проінструктую
             int i = 1;
             int j = 1;
             for (int value = 1; value <= NumCols * NumCols; ++value)
