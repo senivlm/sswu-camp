@@ -108,20 +108,13 @@ namespace Task2._2
             PrintMatrix();
         }
 
-        /*public void GenerateDiagonalSnake(Direction direction)
-        {
-            if (NumCols != NumRows) throw new Exception("Error: number of cols must equal to number of rows");
-
-            if (direction == Direction.RIGHT)
-                GenerateDiagonalSnakeRight();
-            else
-
-        }*/
-        
-
-
         public void GenerateDiagonalSnake(Direction direction)
         {
+            if (NumCols != NumRows)
+            {
+                throw new ArgumentException("Number of columns must be equal to number of rows");
+            }
+
             int value = direction == Direction.RIGHT ? 1 : NumRows * NumRows;
             
             for (int i = 0; i < NumRows; ++i)
