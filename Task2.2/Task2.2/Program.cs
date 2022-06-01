@@ -67,7 +67,20 @@
                     }
                     else if (operation?.ToUpper() == Patterns.DIAGONAL_SNAKE_PATTERN.ToString())
                     {
-                        matrix.GenerateDiagonalSnake();
+                        Console.WriteLine("Choose direction (left/right)");
+                        Console.Write(">> ");
+                        var direction = Console.ReadLine();
+                        if (direction?.ToUpper() == "LEFT")
+                        {
+                            matrix.GenerateDiagonalSnake(Matrix.Direction.LEFT);
+                        }
+                        else if (direction?.ToUpper() == "RIGHT")
+                        {
+                            matrix.GenerateDiagonalSnake(Matrix.Direction.RIGHT);
+                        }
+                        else
+                            throw new InvalidOperationException("Invalid direction");
+                        
                     }
                     else if (operation?.ToUpper() == Patterns.RESET.ToString())
                     {

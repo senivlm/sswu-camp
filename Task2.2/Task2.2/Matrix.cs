@@ -118,30 +118,45 @@ namespace Task2._2
 
         }*/
         
-        public void GenerateDiagonalSnake()
+
+
+        public void GenerateDiagonalSnake(Direction direction)
         {
-            int i = 1;
-            int j = 1;
-            for (int value = 1; value <= NumCols * NumCols; ++value)
+            int value = direction == Direction.RIGHT ? 1 : NumRows * NumRows;
+            
+            for (int i = 0; i < NumRows; ++i)
             {
-                data[i - 1, j - 1] = value;
-                if ((i + j) % 2 == 0)
+                if (i % 2 == 0)
                 {
-                    if (j < NumCols)
-                        ++j;
-                    else
-                        i += 2;
-                    if (i > 1)
-                        --i;
+                    for (int j = 0; j <= i; ++j)
+                    {
+                        data[j, i - j] = direction == Direction.RIGHT ? value++ : value--;
+                    }
                 }
                 else
                 {
-                    if (i < NumCols)
-                        ++i;
-                    else
-                        j += 2;
-                    if (j > 1)
-                        --j;
+                    for (int j = i; j >= 0; --j)
+                    {
+                        data[j, i - j] = direction == Direction.RIGHT ? value++ : value--;
+                    }
+                }
+            }
+
+            for (int i = NumRows; i <= (NumRows - 1) * 2; ++i)
+            {
+                if (i % 2 == 0)
+                {
+                    for (int j = i - NumRows + 1; j < NumRows; ++j)
+                    {
+                        data[j, i - j] = direction == Direction.RIGHT ? value++ : value--;
+                    }
+                }
+                else
+                {
+                    for (int j = NumRows - 1; j >= i - NumRows + 1; --j)
+                    {
+                        data[j, i - j] = direction == Direction.RIGHT ? value++ : value--;
+                    }
                 }
             }
 
