@@ -101,7 +101,7 @@ namespace Task3
             }
             
 
-            for (int i = 0; i < array.Length; ++i)
+            for (int i = 0; i < array.Length / 2; ++i)
             {
                 if (temp[i] != array[i])
                     return false;
@@ -156,11 +156,9 @@ namespace Task3
         {
             if (begin < end)
             {
-                int p = pivot == SortPivots.BEGIN ? begin :
-                    pivot == SortPivots.END ? end :
-                    end - begin / 2;
-
-                //
+                int q = Partition(pivot, begin, end);
+                QuickSort(pivot, begin, q - 1);
+                QuickSort(pivot, q + 1, end);
             }
         }
     
@@ -169,6 +167,50 @@ namespace Task3
             BEGIN,
             MIDDLE,
             END
+        }
+        //----------------------------------------------------------------------------
+        private int Partition(SortPivots pivot, int begin, int end)
+        {
+            int p;
+            if (pivot == SortPivots.BEGIN) 
+                p = begin;
+            else if (pivot == SortPivots.END) 
+                p = end;
+            else 
+                p = end + begin / 2;
+            
+            int i = pivot == SortPivots.BEGIN ? begin + 1 : begin - 1;
+            int j = pivot == SortPivots.BEGIN ? begin + 1 : begin;
+            end = pivot == SortPivots.BEGIN ? end - 1 : end;
+            for (; j <= end; ++j)
+            {
+                
+                if (array[j] < array[p])
+                {
+                    ++i;
+                    Swap(i, j);                    
+                }
+                
+            }
+
+            if (pivot == SortPivots.BEGIN)
+            {
+                Swap(i - 1, begin);
+                return i;
+            }
+
+            Swap(i + 1, end);
+            return i + 1;
+        } 
+        
+        private void Swap(int indexLeft, int indexRight)
+        {
+            if (array.Length <= indexRight || array.Length <= indexLeft)
+                throw new IndexOutOfRangeException("Indexes must be on the array length interval");
+
+            var temp = array[indexLeft];
+            array[indexLeft] = array[indexRight];
+            array[indexRight] = temp;
         }
         //----------------------------------------------------------------------------
         public override string ToString()
@@ -186,34 +228,6 @@ namespace Task3
             }
 
             return line;
-        }
-
-/*        private int Partition(ref int[] Arr, int begin, int end)
-        {
-            int pivot = Arr[end];
-            int i = begin - 1;
-
-            for (int j = begin; j <= end; ++j)
-            {
-                if (Arr[j] <= pivot)
-                {
-                    ++i;
-                    Swap(ref Arr, i, j);
-                }
-            }
-
-            Swap(ref Arr, i + 1, end);
-            return i + 1;
-        } 
-        */
-        private void Swap(ref int[] Arr, int indexLeft, int indexRight)
-        {
-            if (Arr.Length <= indexRight || Arr.Length <= indexLeft)
-                throw new IndexOutOfRangeException("Indexes must be on the array length interval");
-
-            var temp = Arr[indexLeft];
-            Arr[indexLeft] = Arr[indexRight];
-            Arr[indexRight] = temp;
         }
 
         private int[] array;

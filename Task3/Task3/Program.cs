@@ -79,10 +79,28 @@
                         Console.WriteLine(vector);
                         Console.WriteLine(vector.FindLongestСommonSubsequence());
                     }
+                    if (operation?.ToUpper() == Commands.QUICK_SORT.ToString())
+                    {
+
+                        Console.WriteLine();
+                        foreach (Vector.SortPivots p in (Vector.SortPivots[])Enum.GetValues(typeof(Vector.SortPivots)))
+                        {
+                            Console.WriteLine("- " + p);
+                        }
+
+                        Console.WriteLine();
+
+                        Console.WriteLine("Choose sort pivot");
+                        Console.Write(">> ");
+                        Vector.SortPivots pivot = (Vector.SortPivots)Enum.Parse(typeof(Vector.SortPivots), (Console.ReadLine())?.ToUpper() ?? string.Empty, true);
+                        vector.QuickSort(pivot, 0, size - 1);
+                        Console.WriteLine(vector);
+
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
