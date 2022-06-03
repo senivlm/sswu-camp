@@ -165,43 +165,81 @@ namespace Task3
         public enum SortPivots
         {
             BEGIN,
-            MIDDLE,
+            MEDIAN,
             END
         }
         //----------------------------------------------------------------------------
+
         private int Partition(SortPivots pivot, int begin, int end)
         {
             int p;
-            if (pivot == SortPivots.BEGIN) 
-                p = begin;
-            else if (pivot == SortPivots.END) 
-                p = end;
-            else 
-                p = end + begin / 2;
-            
-            int i = pivot == SortPivots.BEGIN ? begin + 1 : begin - 1;
-            int j = pivot == SortPivots.BEGIN ? begin + 1 : begin;
-            end = pivot == SortPivots.BEGIN ? end - 1 : end;
+
+            int i;
+            int j;
+
+            switch (pivot)
+            {
+                case SortPivots.BEGIN:
+                    p = begin;
+                    i = begin + 1;
+                    j = begin + 1;
+                    break;
+                case SortPivots.END:
+                    p = end;
+                    i = begin - 1;
+                    j = begin;
+                    break;
+                default:
+                    return MiddlePartition(begin, end);
+            }
+
             for (; j <= end; ++j)
             {
-                
                 if (array[j] < array[p])
                 {
-                    ++i;
-                    Swap(i, j);                    
+                    if (pivot == SortPivots.BEGIN)
+                    {
+                        if (j != i)
+                        {
+                            Swap(i, j);
+                        }
+                        ++i;
+                    }
+                    else
+                    {
+                        Swap(j, ++i);
+                    }
                 }
-                
             }
 
             if (pivot == SortPivots.BEGIN)
             {
                 Swap(i - 1, begin);
-                return i;
+                return i - 1;
             }
 
             Swap(i + 1, end);
             return i + 1;
-        } 
+        }
+
+        private int MiddlePartition(int begin, int end)
+        {
+            int p = begin + (end - begin) / 2;
+
+            while (begin != end)
+            {
+                if (array[begin] < array[p])
+                {
+                    ++begin;
+                }
+                else
+                {
+                    Swap(begin, end--);
+                }
+            }
+
+            return end;
+        }
         
         private void Swap(int indexLeft, int indexRight)
         {
