@@ -13,7 +13,7 @@ namespace Task2._2
             Reset(rows, cols);
         }
 
-        public void PrintMatrix()
+        public void ShowMatrix()
         {
             Console.WriteLine(NumRows + " " + NumCols);
             for (int i = 0; i < NumRows; ++i)
@@ -49,7 +49,7 @@ namespace Task2._2
                 }
             }
 
-            PrintMatrix();
+            ShowMatrix();
         }
 
         public void GenerateSpiralSnake()
@@ -105,7 +105,7 @@ namespace Task2._2
                 }
             }
 
-            PrintMatrix();
+            ShowMatrix();
         }
 
         public void GenerateDiagonalSnake(Direction direction)
@@ -153,7 +153,7 @@ namespace Task2._2
                 }
             }
 
-            PrintMatrix();
+            ShowMatrix();
         }
 
         public enum Direction
