@@ -103,12 +103,8 @@ namespace Task3
         //----------------------------------------------------------------------------
         public bool CheckPalindrome()
         {
-            int[] temp = new int[array.Length];
-
-            for (int i = 0; i < array.Length; ++i)
-            {
-                temp[i] = array[array.Length - 1 - i];
-            }
+            int[] temp = array;
+            Array.Reverse(temp);
           
             for (int i = 0; i < array.Length / 2; ++i)
             {
@@ -116,7 +112,6 @@ namespace Task3
                     return false;
             }
             
-
             return true; 
         }
         //----------------------------------------------------------------------------
@@ -342,7 +337,7 @@ namespace Task3
 
         private int MiddlePartition(int begin, int end)
         {
-            int p = begin + (end - begin) / 2;
+            int p = (end + begin) / 2;
 
             while (begin != end)
             {
@@ -351,6 +346,8 @@ namespace Task3
                 else
                     Swap(begin, end--);
             }
+
+
 
             return end;
         }

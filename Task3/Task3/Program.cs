@@ -15,7 +15,7 @@
                     operation = Console.ReadLine();
                     try
                     {
-                        if (!Enum.IsDefined(typeof(Operations), operation))
+                        if (!Enum.IsDefined(typeof(Operations), operation.ToUpper()))
                         {
                             throw new InvalidOperationException(operation + " is invalid.");
                         }
@@ -25,7 +25,7 @@
                         Console.WriteLine(ex.Message);
                     }
                 }
-                while (!Enum.IsDefined(typeof(Operations), operation));
+                while (!Enum.IsDefined(typeof(Operations), operation.ToUpper()));
 
                 if (operation?.ToUpper() == Operations.ARRAY_SORT.ToString())
                 {
