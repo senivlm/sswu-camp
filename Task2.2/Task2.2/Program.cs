@@ -60,10 +60,12 @@
                     if (operation?.ToUpper() == Patterns.VERTICAL_SNAKE_PATTERN.ToString())
                     {
                         matrix.GenerateVerticalSnake();
+                        Console.Write(matrix);
                     }
                     else if (operation?.ToUpper() == Patterns.SPIRAL_SNAKE_PATTERN.ToString())
                     {
                         matrix.GenerateSpiralSnake();
+                        Console.Write(matrix);
                     }
                     else if (operation?.ToUpper() == Patterns.DIAGONAL_SNAKE_PATTERN.ToString())
                     {
@@ -79,8 +81,10 @@
                             matrix.GenerateDiagonalSnake(Matrix.Direction.RIGHT);
                         }
                         else
+                        {
                             throw new InvalidOperationException("Invalid direction");
-                        
+                        }
+                        Console.Write(matrix);
                     }
                     else if (operation?.ToUpper() == Patterns.RESET.ToString())
                     {

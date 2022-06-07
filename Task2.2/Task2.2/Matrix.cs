@@ -13,19 +13,6 @@ namespace Task2._2
             Reset(rows, cols);
         }
 
-        public void ShowMatrix()
-        {
-            Console.WriteLine(NumRows + " " + NumCols);
-            for (int i = 0; i < NumRows; ++i)
-            {
-                for (int j = 0; j < NumCols; j++)
-                {
-                    Console.Write(data[i, j] + " ");
-                }
-                Console.Write("\n");
-            }
-        }
-
         public void GenerateVerticalSnake()
         {
             int value = 1; 
@@ -48,8 +35,6 @@ namespace Task2._2
                     }
                 }
             }
-
-            ShowMatrix();
         }
 
         public void GenerateSpiralSnake()
@@ -104,8 +89,6 @@ namespace Task2._2
                     direction = 'r';
                 }
             }
-
-            ShowMatrix();
         }
 
         public void GenerateDiagonalSnake(Direction direction)
@@ -152,8 +135,6 @@ namespace Task2._2
                     }
                 }
             }
-
-            ShowMatrix();
         }
 
         public enum Direction
@@ -171,6 +152,21 @@ namespace Task2._2
             NumRows = newRows;
             NumCols = newCols;
             data = new int[newRows, newCols];
+        }
+
+        public override string ToString()
+        {
+            string temp = NumRows + " " + NumCols + "\n";
+            for (int i = 0; i < NumRows; ++i)
+            {
+                for (int j = 0; j < NumCols; j++)
+                {
+                    temp += data[i, j] + " ";
+                }
+                temp += "\n";
+            }
+
+            return temp;
         }
 
         ~Matrix() { }
