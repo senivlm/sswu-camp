@@ -51,6 +51,7 @@ namespace _6._1
 
             using (StreamWriter sw = new StreamWriter(path))
             {
+                bool isSecondRow = false;
                 if (Headers != null)
                 {
                     sw.WriteLine(PrintLine(tableWidths));
@@ -60,11 +61,16 @@ namespace _6._1
                 foreach (var cells in _rows)
                 {
                     sw.WriteLine(PrintRow(cells, tableWidths));
+                    if (isSecondRow)
+                    {
+                        sw.WriteLine(PrintLine(tableWidths));
+                    }
+                    isSecondRow = !isSecondRow;
                 }
-                if (Headers != null)
+                /*if (Headers != null)
                 {
                     sw.WriteLine(PrintLine(tableWidths));
-                }
+                }*/
             }
         }
 

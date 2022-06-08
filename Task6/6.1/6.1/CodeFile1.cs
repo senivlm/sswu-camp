@@ -1,23 +1,23 @@
 ﻿namespace _6._1
 {
-    struct Quarter
+    struct Quartal
     {
-        enum First
+        public enum First
         {
             January, February, March
         }
 
-        enum Second
+        public enum Second
         {
             April, May, June
         }
 
-        enum Third
+        public enum Third
         {
             July, August, September
         }
 
-        enum Fourth
+        public enum Fourth
         {
             October, November, December
         }
