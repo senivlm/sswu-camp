@@ -1,6 +1,6 @@
 ﻿namespace _6._1
 {
-    struct Quartal
+    struct Quarter
     {
         public enum First
         {

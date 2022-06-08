@@ -13,18 +13,20 @@ namespace _6._1
         private const char JOIN_SEP = '+';
         private List<string> _headers;
         private List<List<string>> _rows;
+        private string _path;
 
-        public TableHandler()
+        public TableHandler(string path)
         {
             _headers = new List<string>();
             _rows = new List<List<string>>();
+            _path = path;
         }
 
         public List<string> Headers { private get => _headers; set => _headers = value; }
 
         public void AddRow(List<string> row) => _rows.Add(row);
 
-        public void PrintTable(string path)
+        public void PrintTable()
         {
             List<int> tableWidths = new List<int>();
             if (Headers.Count != 0)
@@ -49,7 +51,7 @@ namespace _6._1
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter(path))
+            using (StreamWriter sw = new StreamWriter(_path))
             {
                 bool isSecondRow = false;
                 if (Headers != null)
@@ -71,6 +73,9 @@ namespace _6._1
                 {
                     sw.WriteLine(PrintLine(tableWidths));
                 }*/
+
+                DateTime _date = DateTime.Now;
+                sw.WriteLine($"Today\'s date: {_date.Day}.{_date.Month}.{_date.Year}");
             }
         }
 

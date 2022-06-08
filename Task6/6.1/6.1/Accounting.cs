@@ -10,7 +10,7 @@ namespace _6._1
     {
         private const double PRICE = 0.06;
         private DateTime _date = DateTime.MinValue;
-        public List<string> quartalMonths;
+        public List<string> quarterMonths;
         public List<FlatAccount> data;
 
         public struct FlatAccount
@@ -26,7 +26,7 @@ namespace _6._1
         public Accounting(string path)
         {
             int flatCount = 0;
-            int quartalNumber = 0;
+            int quarterNumber = 0;
 
             data = new List<FlatAccount>();
             using (StreamReader sr = new StreamReader(path))
@@ -35,10 +35,10 @@ namespace _6._1
                 if (line != null)
                 {
                     string count = line.Substring(0, line.IndexOf(' '));
-                    string quartal = line.Substring(line.IndexOf(' ') + 1);
+                    string quarter = line.Substring(line.IndexOf(' ') + 1);
 
                     int.TryParse(count, out flatCount);
-                    int.TryParse(quartal, out quartalNumber);
+                    int.TryParse(quarter, out quarterNumber);
                 }
                 else
                     throw new ArgumentNullException("Exception: File is empty");
@@ -69,37 +69,49 @@ namespace _6._1
                     data.Add(account);
                 }
 
-                quartalMonths = new List<string>();
-                switch (quartalNumber)
+                quarterMonths = new List<string>();
+                switch (quarterNumber)
                 {
                     case 1:
-                        foreach (Quartal.First month in (Quartal.First[])Enum.GetValues(typeof(Quartal.First)))
+                        foreach (Quarter.First month in (Quarter.First[])Enum.GetValues(typeof(Quarter.First)))
                         {
-                            quartalMonths.Add(month.ToString());
+                            quarterMonths.Add(month.ToString());
                         }
                         break;
                     case 2:
-                        foreach (Quartal.Second month in (Quartal.First[])Enum.GetValues(typeof(Quartal.Second)))
+                        foreach (Quarter.Second month in (Quarter.First[])Enum.GetValues(typeof(Quarter.Second)))
                         {
-                            quartalMonths.Add(month.ToString());
+                            quarterMonths.Add(month.ToString());
                         }
                         break;
                     case 3:
-                        foreach (Quartal.Third month in (Quartal.First[])Enum.GetValues(typeof(Quartal.Third)))
+                        foreach (Quarter.Third month in (Quarter.First[])Enum.GetValues(typeof(Quarter.Third)))
                         {
-                            quartalMonths.Add(month.ToString());
+                            quarterMonths.Add(month.ToString());
                         }
                         break;
                     case 4:
-                        foreach (Quartal.Fourth month in (Quartal.First[])Enum.GetValues(typeof(Quartal.Fourth)))
+                        foreach (Quarter.Fourth month in (Quarter.First[])Enum.GetValues(typeof(Quarter.Fourth)))
                         {
-                            quartalMonths.Add(month.ToString());
+                            quarterMonths.Add(month.ToString());
                         }
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException(nameof(quartalNumber) + " can't be bigger than 4");
+                        throw new ArgumentOutOfRangeException(nameof(quarterNumber) + " can't be bigger than 4");
                 }
             }
         }
+
+        public FlatAccount GetMaxDebtAccount()
+        {
+            int maxDebtIndex = 0;
+            for (int i = 0; i < data.Count; ++i)
+            {
+                maxDebtIndex = data[i].debt > data[maxDebtIndex].debt ? i : maxDebtIndex;
+            }
+
+            return data[maxDebtIndex];
+        }
+
     }
 }
