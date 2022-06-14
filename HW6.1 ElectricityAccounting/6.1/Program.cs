@@ -7,7 +7,7 @@
         private static DateTime _date;
         private static string inputFile = @"C:\Users\vital\source\repos\sswu-camp\Task6\6.1\6.1\Accounts.txt";
         private static string outputFile = @"C:\Users\vital\source\repos\sswu-camp\Task6\6.1\6.1\Result.txt";
-
+// Дуже добрий кінцевий результат
         public static void Main(string[] args)
         {
             try
