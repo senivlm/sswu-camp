@@ -14,7 +14,7 @@ namespace _6._2
         private List<string> text;
         
         public TextHandler(string path)
-        {
+        {// в клієнті ці винятки залишились не перехоплені
             if (!File.Exists(path))
                 throw new FileNotFoundException($"{path} file not found.");
             _path = path;
@@ -24,7 +24,7 @@ namespace _6._2
         public void Init()
         {
             using (StreamReader sr = new StreamReader(_path))
-            {
+            {//речення можуть мати кілька розділювачів
                 const char dot = '.';
                 string sentence = string.Empty;
 
