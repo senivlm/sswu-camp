@@ -16,7 +16,7 @@
                 tableHandler = new TableHandler(outputFile);
                 tableHandler.Headers = new List<string> { "#", "Owner\'s surname ", accounting.quarterMonths[0], accounting.quarterMonths[1], accounting.quarterMonths[2], "Debt($)", "Days after" };
                 _date = DateTime.Now;
-
+//в enum можна звертатись за номером
                 foreach (Operations op in (Operations[])Enum.GetValues(typeof(Operations)))
                 {
                     Console.WriteLine($"- {op}");
