@@ -1,0 +1,3 @@
+﻿Meat Miaso Pok First 0.4 500
+Diary_Product 1 20 10
+diaryproduct 1 0 0
