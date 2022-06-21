@@ -148,7 +148,8 @@ namespace _6._1
         }
 
         public static Accounting operator+(Accounting lhs, Accounting rhs)
-        {
+        {//Є проблеми у перевантаженні. Поясню словесно.
+            
             if (lhs.quarterNumber != rhs.quarterNumber)
                 throw new InvalidCastException();
 
