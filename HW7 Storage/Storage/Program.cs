@@ -3,7 +3,7 @@
     class Program
     {
         public static void Main(string[] args)
-        {
+        {// більшість цього коду не на своєму місці
             Storage storage = new Storage();
 
             foreach(Commands command in (Commands[]) Enum.GetValues(typeof(Commands)))
