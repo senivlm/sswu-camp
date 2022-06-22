@@ -63,9 +63,13 @@
                         var temp = storage.At(i);
                         temp.PrintInformation();
                     }
-                    else if (operation?.ToUpper() == Commands.GET_ERROR_FOR_DATE.ToString())
+                    else if (operation?.ToUpper() == Commands.GET_ERRORS_FOR_DATE.ToString())
                     {
-                        
+                        Console.WriteLine("Enter date (dd/MM/year HH:mm:ss)");
+                        string sDate = Console.ReadLine();
+                        DateTime date = DateTime.ParseExact(sDate, ErrorLogs.sDateFormats, new System.Globalization.CultureInfo("FR-fr"), System.Globalization.DateTimeStyles.None);
+                        List<string> errors = storage.GetErrorForDate(date);
+                        errors.ForEach(item => Console.WriteLine(item));
                     }
                     else if (operation?.ToUpper() == Commands.EXIT.ToString())
                     {
@@ -91,7 +95,7 @@
             GET_MEATS,
             PRINT_PRODUCTS,
             AT,
-            GET_ERROR_FOR_DATE,
+            GET_ERRORS_FOR_DATE,
             EXIT
         }
     }

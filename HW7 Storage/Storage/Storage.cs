@@ -69,13 +69,9 @@ namespace Storage_
             }
         }
 
-        public void GetErrorForDate()
+        public List<string> GetErrorForDate(DateTime date)
         {
-            Console.WriteLine("Enter date (dd/MM/year HH:mm:ss)");
-            string sDate = Console.ReadLine();
-            DateTime date = DateTime.ParseExact(sDate, ErrorLogs.sDateFormats, new System.Globalization.CultureInfo("FR-fr"), System.Globalization.DateTimeStyles.None);
-            List<string> errors = eLogs.GetLogsForDate(date);
-            errors.ForEach(item => Console.WriteLine(item));
+            return eLogs.GetLogsForDate(date);     
         }
 
         public void AddProductDialog()
