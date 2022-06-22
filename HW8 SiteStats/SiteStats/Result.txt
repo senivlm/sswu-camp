@@ -1,0 +1,8 @@
+139.18.150.126 
+Visit count: 3
+The most popular day: Monday
+The most popular hour: 13
+140.12.0.212 
+Visit count: 1
+The most popular day: Tuesday
+The most popular hour: 12
