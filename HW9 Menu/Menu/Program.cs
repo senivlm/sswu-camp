@@ -3,7 +3,7 @@
     class Program
     {
         static void Main(string[] args)
-        {
+        {// 10 не знайшла
             Menu menu = new Menu(@"../../../Menu.txt");
             
             Console.WriteLine("Choose currency (eur/usd)");
