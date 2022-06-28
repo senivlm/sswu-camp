@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Menu
-{
+{// Клас не зовсім відповідає назві та принципам solid
     public class Menu
     {
         private List<Dish> _dishes;
